@@ -3,7 +3,12 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			user: {
+				telegramId: string
+				createdAt: Date
+			}
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
