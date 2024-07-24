@@ -2,6 +2,10 @@ import type { Action } from './$types'
 import { fail, redirect } from '@sveltejs/kit'
 import { db } from '$lib/prisma'
 
+const success: Action = async () => {
+	redirect(303, '/login')
+} 
+
 const signup: Action = async ({ request }) => {
 	const data = await request.formData()
 	const telegramId = data.get('telegramId') as string
@@ -35,9 +39,10 @@ const signup: Action = async ({ request }) => {
 		}
 	})
 
-	throw redirect(303, '/login')
+	return { success: true, authToken }
 }
 
 export const actions = {
-	signup
+	signup,
+	success
 }

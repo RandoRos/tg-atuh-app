@@ -1,5 +1,9 @@
 <script lang="ts">
+	import TokenDialog from '$lib/components/TokenDialog.svelte'
 	export let form
+
+	const authToken = form?.authToken
+	$: open = form?.success
 </script>
 
 <h1 class="text-3xl text-center">Sign Up</h1>
@@ -28,3 +32,5 @@
 		<span>Error! {form.error}</span>
 	</div>
 {/if}
+
+<TokenDialog bind:isDialogOpen={open} {authToken} />

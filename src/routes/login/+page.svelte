@@ -1,5 +1,8 @@
 <script lang="ts">
+	import TokenValidationDialog from '$lib/components/TokenValidationDialog.svelte'
   export let form
+
+	let open = form?.success
 </script>
 
 <h1 class="text-3xl text-center">Login</h1>
@@ -28,3 +31,5 @@
 		<span>Error! {form.error}</span>
 	</div>
 {/if}
+
+<TokenValidationDialog bind:isDialogOpen={open} />
