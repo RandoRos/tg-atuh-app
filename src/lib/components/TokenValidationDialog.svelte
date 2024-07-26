@@ -12,8 +12,6 @@
 				name="token"
 				type="text"
 			/>
-
-			<p class="p-2 text-sm">Please copy and save it to somewhere safe, you need this for login</p>
 			<div class="modal-action">
 				<!-- if there is a button in form, it will close the modal -->
 				<button on:click={() => (isDialogOpen = false)} class="btn">Validate</button>

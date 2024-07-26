@@ -22,6 +22,6 @@
 	</ul>
 </nav>
 
-<main class="container mx-auto max-w-lg my-10">
+<main class="container mx-auto max-w-3xl my-10">
 	<slot />
 </main>
