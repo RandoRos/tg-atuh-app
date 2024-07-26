@@ -18,13 +18,13 @@ const signup: Action = async ({ request }) => {
 	const telegramId = data.get('telegramId') as string
 	const password = data.get('password') as string
 
-	if (!telegramId || typeof telegramId !== 'string') {
+	if (!telegramId) {
 		return fail(400, {
 			error: 'Invalid telegram id'
 		})
 	}
 
-	if (!password || typeof telegramId !== 'string') {
+	if (!password) {
 		return fail(400, {
 			error: 'Invalid password'
 		})

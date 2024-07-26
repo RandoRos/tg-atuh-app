@@ -12,6 +12,6 @@
 {#if show}
 	<div role="alert" class="alert alert-error mt-10 text-sm w-1/2 mx-auto duration-75">
 		<Error />
-		<span>Oops! {message}</span>
+		<span>Failed! {message}</span>
 	</div>
 {/if}

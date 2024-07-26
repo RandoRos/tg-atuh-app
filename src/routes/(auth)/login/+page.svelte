@@ -5,7 +5,7 @@
 
 	export let form
 
-	let open = form?.success
+	$: open = form?.success
 </script>
 
 <h1 class="text-3xl text-center font-semibold antialiased">Login</h1>
