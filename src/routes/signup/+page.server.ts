@@ -1,19 +1,32 @@
 import type { Action } from './$types'
 import { fail, redirect } from '@sveltejs/kit'
 import { db } from '$lib/prisma'
+import { hashPassword } from '$lib/hashing'
+
+export const load = async ({ locals }) => {
+	if (locals.user) {
+		throw redirect(302, '/profile')
+	}
+}
 
 const success: Action = async () => {
 	redirect(303, '/login')
-} 
+}
 
 const signup: Action = async ({ request }) => {
 	const data = await request.formData()
 	const telegramId = data.get('telegramId') as string
 	const password = data.get('password') as string
 
-	if (!telegramId || !password) {
+	if (!telegramId || typeof telegramId !== 'string') {
 		return fail(400, {
-			error: 'Missing password or telegramId'
+			error: 'Invalid telegram id'
+		})
+	}
+
+	if (!password || typeof telegramId !== 'string') {
+		return fail(400, {
+			error: 'Invalid password'
 		})
 	}
 
@@ -29,13 +42,15 @@ const signup: Action = async ({ request }) => {
 		})
 	}
 
+	const passwordHash = await hashPassword(password)
 	const authToken = crypto.randomUUID()
+
 	await db.user.create({
 		data: {
 			telegramId,
-			passwordHash: password,
+			passwordHash,
 			authToken,
-      sessionToken: crypto.randomUUID()
+			sessionToken: crypto.randomUUID()
 		}
 	})
 
