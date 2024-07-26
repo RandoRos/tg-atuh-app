@@ -20,17 +20,14 @@ To get this project up an running you first need to:
 1. install dependencies `npm install`
 2. initialize database `npx prisma db push`
 
-## Running project
+### Running project dev
 
 To run this project in **`local/dev`** environment:
 
-1. run dev `npm run dev`
-2. (optional) run db manager `npx prisma studio`
+1. To run dev: `npm run dev`
+2. (optional) run db manager: `npx prisma studio`
 
-## Building for production
+### Running project for production
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
+1. To create a production version of your app: `npm run build`
+2. To run in production: `npm run preview` 
